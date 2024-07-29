@@ -1,0 +1,71 @@
+<div class="container mt-5 w-50">
+  <h1 class="text-center mb-3">Contact</h1>
+
+  <form
+    [formGroup]="contactForm"
+    (submit)="submitForm()"
+    class="content mt-5 mt-3 row g-3"
+  >
+    <div class="mb-3 col-md-6">
+      <label for="first-name" class="form-label">First Name</label>
+      <input
+        type="text"
+        id="first-name"
+        class="form-control"
+        formControlName="firstName"
+      />
+    </div>
+
+    <div class="mb-3 col-md-6">
+      <label for="last-name " class="form-label">Last Name</label>
+      <input
+        type="text"
+        id="last-name"
+        class="form-control"
+        formControlName="lastName"
+      />
+    </div>
+
+    <div class="mb-3 col-md-6">
+      <label for="phone" class="form-label">Phone</label>
+      <input
+        type="phone"
+        id="phone"
+        class="form-control"
+        formControlName="phone"
+      />
+    </div>
+
+    <div class="mb-3 col-md-6">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+      />
+    </div>
+
+    <div class="mb-3 col">
+      <label for="message" class="form-label">Message</label>
+      <textarea
+        id="message"
+        class="form-control"
+        formControlName="message"
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <address class="mt-5">
+    Come visit us at:<br />
+    Valor.com<br />
+    <a
+      href="https://www.google.ca/maps/@43.447691,-80.6963163,9.25z?entry=ttu"
+      target="_blank"
+      >123 Main St, Anytown, USA 12345</a
+    ><br />
+    Phone: 555-555-5555<br />
+  </address>
+</div>

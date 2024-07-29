@@ -1,0 +1,142 @@
+<div class="container w-50">
+  <h1 class="mt-5 text-center">Add Event</h1>
+
+  <form class="mt-3 row g-3" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div class="col-12">
+      <label for="title" class="form-label">Event Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        formControlName="title"
+      />
+    </div>
+
+    <div class="col-md-6">
+      <label for="event-start" class="form-label">Start Time</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="event-start"
+        formControlName="eventStart"
+      />
+    </div>
+
+    <div class="col-md-6">
+      <label for="event-end" class="form-label">End Time</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="event-end"
+        formControlName="eventEnd"
+      />
+    </div>
+
+    <div class="form-check col-md-12 ms-2">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="repeat"
+        formControlName="repeat"
+      />
+      <label class="form-check-label" for="repeat"> Repeat </label>
+    </div>
+
+    <div class="row g-3" *ngIf="eventForm.get('repeat')?.value">
+      <div class="col-md-4">
+        <label for="duration" class="form-label">Duration</label>
+        <input
+          type="text"
+          class="form-control"
+          id="duration"
+          formControlName="duration"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="repeat-until" class="form-label">Until</label>
+        <input
+          type="date"
+          class="form-control"
+          id="repeat-until"
+          formControlName="until"
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="frequency" class="form-label">Frequency</label>
+        <select id="frequency" class="form-select" formControlName="frequency">
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="interval" class="form-label">Interval</label>
+        <input
+          type="number"
+          class="form-control"
+          id="interval"
+          formControlName="interval"
+        />
+      </div>
+
+      <div class="col-md-3 form-check">
+        <label class="form-label" for="weekDay"> Week Day </label>
+        <select
+          id="weekDay"
+          multiple
+          class="form-select"
+          formControlName="weekDay"
+          aria-label="Multiple select"
+        >
+          <option value="mo">Monday</option>
+          <option value="tu">Tuesday</option>
+          <option value="we">Wednesday</option>
+          <option value="th">Thursday</option>
+          <option value="fr">Friday</option>
+          <option value="sa">Saturday</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="background-color" class="form-label"
+          >Background Color</label
+        >
+        <input
+          type="color"
+          class="form-control"
+          id="background-color"
+          formControlName="backgroundColor"
+        />
+      </div>
+
+      <div class="col-md-3">
+        <label for="text-color" class="form-label">Text Color</label>
+        <input
+          type="color"
+          class="form-control"
+          id="text-color"
+          formControlName="textColor"
+        />
+      </div>
+    </div>
+
+    <div class="row mt-3 g-3">
+      <div class="col-md-1">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary" (click)="onClearForm()">
+          Clear Form
+        </button>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary" (click)="logOut()">
+          Log Out
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <app-events-list></app-events-list>
+</div>

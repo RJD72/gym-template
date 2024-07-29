@@ -1,0 +1,24 @@
+<div class="mt-5">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Start</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of eventData | async">
+          <td>{{ data.title }}</td>
+          <td>{{ data.start }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteData(data.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

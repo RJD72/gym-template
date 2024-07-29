@@ -1,0 +1,45 @@
+.hero {
+  height: 450px;
+  background-image: url("https://images.unsplash.com/photo-1682545888368-587f56efd06e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YmpqfGVufDB8MHwwfHx8Mg%3D%3D");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.join-btn {
+  background-color: #f44336;
+}
+
+.join-btn:hover {
+  background-color: #000;
+  color: green;
+}
+
+span {
+  font-weight: bold;
+}
+
+.center-content {
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: -10px;
+  width: 300px; /* Desired background width */
+  height: 110%; /* Full height of the parent div */
+  background-color: #e0e0e0; /* Desired background color */
+  z-index: -1; /* Behind the content */
+}
+
+@media (max-width: 1200px) {
+  .content::before {
+    display: none;
+  }
+}
