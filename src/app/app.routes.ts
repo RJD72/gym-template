@@ -17,17 +17,26 @@ export const routes: Routes = [
   { path: '', component: HomeComponent, title: 'Valor BJJ | Home' },
   {
     path: 'schedule',
-    component: ScheduleComponent,
+    loadComponent: () =>
+      import('./components/schedule/schedule.component').then(
+        (m) => m.ScheduleComponent
+      ),
     title: 'Valor BJJ | Schedule',
   },
   {
     path: 'instructors',
-    component: InstructorsComponent,
+    loadComponent: () =>
+      import('./components/instructors/instructors.component').then(
+        (m) => m.InstructorsComponent
+      ),
     title: 'Valor BJJ | Instructors',
   },
   {
     path: 'contact',
-    component: ContactComponent,
+    loadComponent: () =>
+      import('./components/contact/contact.component').then(
+        (m) => m.ContactComponent
+      ),
     title: 'Valor BJJ | Contact',
   },
   {
