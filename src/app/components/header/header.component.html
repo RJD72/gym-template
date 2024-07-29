@@ -81,8 +81,11 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/admin" routerLinkActive="active"
-            >Sign In</a
+          <a
+            class="nav-link"
+            [routerLink]="link.route"
+            routerLinkActive="active"
+            >{{ link.text }}</a
           >
         </li>
       </ul>
