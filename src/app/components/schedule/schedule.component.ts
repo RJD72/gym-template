@@ -22,29 +22,14 @@ export class ScheduleComponent implements AfterViewInit, OnInit {
   calendarOptions: CalendarOptions = this.calendarService.getCalendarOptions();
 
   ngAfterViewInit(): void {
-    this.handleWindowResize();
+    if (this.calendarComponent) {
+      this.calendarService.setCalendarComponent(this.calendarComponent);
+      this.calendarService.handleWindowResize();
+      window.addEventListener('resize', () =>
+        this.calendarService.handleWindowResize()
+      );
+    }
   }
 
   ngOnInit(): void {}
-
-  handleWindowResize() {
-    const width = window.innerWidth;
-
-    const calendarApi = this.calendarComponent.getApi();
-    if (width <= 991) {
-      calendarApi.changeView('timeGridDay');
-      calendarApi.setOption('headerToolbar', {
-        left: 'prev,next',
-        center: 'title',
-        right: '',
-      });
-    } else {
-      calendarApi.changeView('dayGridMonth');
-      calendarApi.setOption('headerToolbar', {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay',
-      });
-    }
-  }
 }

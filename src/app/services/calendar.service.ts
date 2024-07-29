@@ -5,6 +5,8 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import rrulePlugin from '@fullcalendar/rrule';
 import { FirestoreService } from './firebase.service';
+import { FullCalendarComponent } from '@fullcalendar/angular';
+import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,7 @@ export class CalendarService {
   private calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
 
-    // windowResize: this.handleWindowResize.bind(this),
+    windowResize: this.handleWindowResize.bind(this),
     views: {
       timeGridWeek: {
         titleFormat: { year: 'numeric', month: 'short', day: 'numeric' },
@@ -44,8 +46,15 @@ export class CalendarService {
     allDaySlot: false,
   };
 
+  private eventSubscription: Subscription | undefined;
+  private calendarComponent: FullCalendarComponent | undefined;
+
   constructor(private fireStoreService: FirestoreService) {
     this.initializeEvents();
+  }
+
+  setCalendarComponent(calendarComponent: FullCalendarComponent): void {
+    this.calendarComponent = calendarComponent;
   }
 
   private initializeEvents(): any {
@@ -72,5 +81,32 @@ export class CalendarService {
     ).map((event) =>
       event.id === eventId ? { ...event, ...updatedEvent } : event
     );
+  }
+
+  handleWindowResize(): void {
+    if (!this.calendarOptions) return;
+
+    const width = window.innerWidth;
+
+    const calendarApi = this.calendarComponent?.getApi();
+    if (width <= 991) {
+      calendarApi?.changeView('timeGridDay');
+      calendarApi?.setOption('headerToolbar', {
+        left: 'prev,next',
+        center: 'title',
+        right: '',
+      });
+    } else {
+      calendarApi?.changeView('dayGridMonth');
+      calendarApi?.setOption('headerToolbar', {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay',
+      });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.eventSubscription?.unsubscribe();
   }
 }

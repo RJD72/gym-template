@@ -26,7 +26,7 @@ export class AuthService {
     signOut(this.fireAuth).then(
       () => {
         localStorage.removeItem('token');
-        this.router.navigate(['/']);
+        this.router.navigate(['/admin']);
       },
       (err) => {
         alert('Something went wrong');
