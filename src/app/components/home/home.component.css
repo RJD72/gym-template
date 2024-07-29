@@ -18,28 +18,3 @@
 span {
   font-weight: bold;
 }
-
-.center-content {
-}
-
-.content {
-  position: relative;
-  z-index: 1;
-}
-
-.content::before {
-  content: "";
-  position: absolute;
-  top: -50px;
-  left: -10px;
-  width: 300px; /* Desired background width */
-  height: 110%; /* Full height of the parent div */
-  background-color: #e0e0e0; /* Desired background color */
-  z-index: -1; /* Behind the content */
-}
-
-@media (max-width: 1200px) {
-  .content::before {
-    display: none;
-  }
-}
