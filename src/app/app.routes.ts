@@ -48,6 +48,7 @@ export const routes: Routes = [
     path: 'input',
     component: CalendarInputComponent,
     canActivate: [AuthGuard],
+    title: 'Valor BJJ | Input',
   },
   {
     path: 'programs/kids',
