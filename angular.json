@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "huron-bjj": {
+    "valor-bjj": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "huron-bjj:build:production"
+              "buildTarget": "valor-bjj:build:production"
             },
             "development": {
-              "buildTarget": "huron-bjj:build:development"
+              "buildTarget": "valor-bjj:build:development"
             }
           },
           "defaultConfiguration": "development"
